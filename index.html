@@ -1,12 +1,269 @@
 <!doctype html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Pussy - Fresh Food, On Schedule</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-bg {
+      background: linear-gradient(to bottom right, #dbeafe, #fef9c3, #dbeafe);
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #60a5fa, #fde047);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-button {
+      background: linear-gradient(to right, #60a5fa, #fde047);
+      transition: all 0.3s;
+    }
+    .gradient-button:hover {
+      background: linear-gradient(to right, #3b82f6, #facc15);
+      transform: scale(1.05);
+    }
+    .gradient-section {
+      background: linear-gradient(to right, #60a5fa, #fde047);
+    }
+    .icon-blue { color: #2563eb; }
+    .icon-yellow { color: #eab308; }
+    .bg-blue-light { background-color: #dbeafe; }
+    .bg-yellow-light { background-color: #fef9c3; }
+  </style>
+</head>
+<body class="gradient-bg min-h-screen">
+  
+  <!-- Hero Section -->
+  <div class="container mx-auto px-4 py-16 max-w-6xl">
+    <div class="text-center mb-12">
+      <div class="inline-block mb-4 px-4 py-2 bg-blue-100 rounded-full text-blue-700 font-semibold text-sm">
+        Coming Soon 🐱
+      </div>
+      <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+        <span class="block gradient-text">Project Pussy</span>
+        <span class="block text-3xl md:text-4xl mt-2">Fresh Food, On Schedule</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        The automated refrigerated cat feeder for busy people who want their cats to enjoy fresh, 
+        healthy meals without the hassle. Set it and forget it.
+      </p>
+    </div>
 
-<body>
-  <h1>The World's Best Automated Refrigerated Cat Feeder</h1>
-  <p>In the Works</p>
-  <p>Are you interested?</p>
-  <img>
-</body><img src="CatFeederVisual.png" alt="visual" style="width:100px;height:200px;">
+    <!-- Email Signup Form -->
+    <div class="max-w-md mx-auto mb-16">
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">
+          Join the Waitlist
+        </h2>
+        <p class="text-gray-600 mb-6 text-center">
+          Be the first to know when we launch and get exclusive early bird pricing!
+        </p>
+        
+        <div class="space-y-4">
+          <div>
+            <input
+              type="email"
+              id="emailInput"
+              placeholder="Enter your email address"
+              class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-400 focus:outline-none transition-colors"
+            />
+          </div>
+          
+          <button
+            id="submitButton"
+            class="gradient-button w-full text-white font-semibold py-3 px-6 rounded-lg"
+          >
+            Notify Me at Launch
+          </button>
+        </div>
+
+        <div id="successMessage" class="hidden mt-4 p-4 bg-green-50 rounded-lg">
+          <p class="text-green-800 text-sm">✓ Thank you! We'll notify you when we launch.</p>
+        </div>
+
+        <div id="errorMessage" class="hidden mt-4 p-4 bg-red-50 rounded-lg">
+          <p class="text-red-800 text-sm">⚠ Please enter a valid email address</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Problem/Solution Section -->
+    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-16">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">
+          Love Your Cat. Love Your Schedule.
+        </h2>
+        <p class="text-lg text-gray-600 mb-6 text-center">
+          You want to feed your cat fresh, healthy food instead of dry kibble. But you're busy—
+          work, travel, errands. Fresh food spoils. You can't be home every few hours.
+        </p>
+        <p class="text-lg text-gray-600 text-center font-semibold text-blue-700">
+          Until now.
+        </p>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="icon-blue" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Sealed & Refrigerated</h3>
+        <p class="text-gray-600">
+          Mini-fridge technology keeps wet food sealed and fresh at the perfect temperature. 
+          No more spoiled meals, no more waste.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="icon-yellow" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Set Your Schedule</h3>
+        <p class="text-gray-600">
+          Program custom feeding times directly on the machine. Set it once, and your cat eats 
+          fresh food on schedule, every day.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="icon-blue" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-3">Built for Busy Lives</h3>
+        <p class="text-gray-600">
+          Long workdays? Weekend trips? Late nights? Your cat still gets fresh, healthy meals 
+          without you being home.
+        </p>
+      </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="gradient-section rounded-2xl shadow-xl p-8 md:p-12 mb-16 text-white">
+      <h2 class="text-3xl font-bold mb-8 text-center">How It Works</h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+            1
+          </div>
+          <h3 class="font-bold text-lg mb-2">Load & Seal</h3>
+          <p class="text-blue-50">
+            Fill compartments with fresh wet food. The sealed design keeps it fresh like a mini-fridge.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+            2
+          </div>
+          <h3 class="font-bold text-lg mb-2">Set Times</h3>
+          <p class="text-blue-50">
+            Program your cat's feeding schedule directly on the device. Breakfast, dinner, or both.
+          </p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+            3
+          </div>
+          <h3 class="font-bold text-lg mb-2">Live Your Life</h3>
+          <p class="text-blue-50">
+            Go to work. Go out. Travel. Your cat gets fresh food automatically, right on schedule.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+      <svg class="text-yellow-400 mx-auto mb-4" width="48" height="48" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">
+        Fresh Food Shouldn't Be This Hard
+      </h2>
+      <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+        Join <span class="font-bold text-blue-600">500+</span> cat parents who are ready 
+        to give their cats the fresh food they deserve, without sacrificing their schedule.
+      </p>
+      <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="gradient-button text-white font-semibold py-3 px-8 rounded-lg">
+        Join the Waitlist
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 py-8 mt-16">
+    <div class="container mx-auto px-4 text-center text-gray-600 text-sm">
+      <p>© 2024 Project Pussy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const emailInput = document.getElementById('emailInput');
+    const submitButton = document.getElementById('submitButton');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+
+    submitButton.addEventListener('click', handleSubmit);
+    emailInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        handleSubmit();
+      }
+    });
+
+    async function handleSubmit() {
+      const email = emailInput.value.trim();
+      
+      // Hide previous messages
+      successMessage.classList.add('hidden');
+      errorMessage.classList.add('hidden');
+      
+      // Validate email
+      if (!email || !email.includes('@')) {
+        errorMessage.classList.remove('hidden');
+        return;
+      }
+
+      // Disable button while submitting
+      submitButton.disabled = true;
+      submitButton.textContent = 'Joining...';
+
+      try {
+        // Replace this URL with your actual API endpoint
+        const response = await fetch('/.netlify/functions/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          successMessage.classList.remove('hidden');
+          emailInput.value = '';
+        } else {
+          errorMessage.querySelector('p').textContent = '⚠ ' + (data.error || 'Something went wrong. Please try again.');
+          errorMessage.classList.remove('hidden');
+        }
+      } catch (error) {
+        errorMessage.querySelector('p').textContent = '⚠ Network error. Please check your connection and try again.';
+        errorMessage.classList.remove('hidden');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Notify Me at Launch';
+      }
+    }
+  </script>
 </body>
-
 </html>
