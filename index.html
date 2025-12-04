@@ -69,35 +69,32 @@
     </div>
 
     <!-- Email Signup Form -->
-    <div class="max-w-md mx-auto mb-16">
-      <div class="bg-white rounded-2xl shadow-xl p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 text-center">
-          Join the Waitlist
-        </h2>
-        <p class="text-gray-600 mb-6 text-center">
-          Be the first to know when we launch and get exclusive early bird pricing!
-        </p>
+    <form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="waitlistForm">
+      <input type="hidden" name="form-name" value="waitlist" />
+      <p style="display:none">
+        <label>Don’t fill this out: <input name="bot-field" /></label>
+      </p>
 
-        <div class="space-y-4">
-          <div>
-            <input type="email" id="emailInput" placeholder="Enter your email address"
-              class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-400 focus:outline-none transition-colors" />
-          </div>
+      <div class="space-y-4">
+        <input type="email" name="email" id="emailInput" placeholder="Enter your email address"
+          class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-400 focus:outline-none transition-colors"
+          required />
 
-          <button id="submitButton" class="gradient-button w-full text-white font-semibold py-3 px-6 rounded-lg">
-            Notify Me at Launch
-          </button>
-        </div>
-
-        <div id="successMessage" class="hidden mt-4 p-4 bg-green-50 rounded-lg">
-          <p class="text-green-800 text-sm">✓ Thank you! We'll notify you when we launch.</p>
-        </div>
-
-        <div id="errorMessage" class="hidden mt-4 p-4 bg-red-50 rounded-lg">
-          <p class="text-red-800 text-sm">⚠ Please enter a valid email address</p>
-        </div>
+        <button type="submit" id="submitButton"
+          class="gradient-button w-full text-white font-semibold py-3 px-6 rounded-lg">
+          Notify Me at Launch
+        </button>
       </div>
-    </div>
+
+      <div id="successMessage" class="hidden mt-4 p-4 bg-green-50 rounded-lg">
+        <p class="text-green-800 text-sm">✓ Thank you! We'll notify you when we launch.</p>
+      </div>
+
+      <div id="errorMessage" class="hidden mt-4 p-4 bg-red-50 rounded-lg">
+        <p class="text-red-800 text-sm">⚠ Please enter a valid email address</p>
+      </div>
+    </form>
+
 
     <!-- Problem/Solution Section -->
     <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-16">
@@ -228,61 +225,56 @@
   </footer>
 
   <script>
-    const emailInput = document.getElementById('emailInput');
-    const submitButton = document.getElementById('submitButton');
-    const successMessage = document.getElementById('successMessage');
-    const errorMessage = document.getElementById('errorMessage');
+    const form = document.getElementById("waitlistForm");
+    const emailInput = document.getElementById("emailInput");
+    const submitButton = document.getElementById("submitButton");
+    const successMessage = document.getElementById("successMessage");
+    const errorMessage = document.getElementById("errorMessage");
 
-    submitButton.addEventListener('click', handleSubmit);
-    emailInput.addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        handleSubmit();
-      }
-    });
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    async function handleSubmit() {
+      // Reset messages
+      successMessage.classList.add("hidden");
+      errorMessage.classList.add("hidden");
+
       const email = emailInput.value.trim();
-
-      // Hide previous messages
-      successMessage.classList.add('hidden');
-      errorMessage.classList.add('hidden');
-
-      // Validate email
-      if (!email || !email.includes('@')) {
-        errorMessage.classList.remove('hidden');
+      if (!email || !email.includes("@")) {
+        errorMessage.classList.remove("hidden");
         return;
       }
 
-      // Disable button while submitting
       submitButton.disabled = true;
-      submitButton.textContent = 'Joining...';
+      submitButton.textContent = "Joining...";
+
+      // Build form data for Netlify
+      const formData = new FormData(form);
 
       try {
-        // Replace this URL with your actual API endpoint
-        const response = await fetch('/.netlify/functions/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email })
+        const response = await fetch("/", {
+          method: "POST",
+          body: formData,
         });
 
-        const data = await response.json();
-
         if (response.ok) {
-          successMessage.classList.remove('hidden');
-          emailInput.value = '';
+          successMessage.classList.remove("hidden");
+          emailInput.value = "";
         } else {
-          errorMessage.querySelector('p').textContent = '⚠ ' + (data.error || 'Something went wrong. Please try again.');
-          errorMessage.classList.remove('hidden');
+          errorMessage.querySelector("p").textContent =
+            "⚠ Something went wrong. Please try again.";
+          errorMessage.classList.remove("hidden");
         }
-      } catch (error) {
-        errorMessage.querySelector('p').textContent = '⚠ Network error. Please check your connection and try again.';
-        errorMessage.classList.remove('hidden');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Notify Me at Launch';
+      } catch (err) {
+        errorMessage.querySelector("p").textContent =
+          "⚠ Network error. Please try again.";
+        errorMessage.classList.remove("hidden");
       }
-    }
+
+      submitButton.disabled = false;
+      submitButton.textContent = "Notify Me at Launch";
+    });
   </script>
+
 </body>
 
 </html>
